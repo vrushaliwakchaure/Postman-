@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "ba4d4b80-71a8-4769-bdec-7c3cc1164ee1",
+		"name": "DummyAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22891475"
+	},
+	"item": [
+		{
+			"name": "{{dummyUrl}}/1",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{dummyUrl}}/1",
+					"host": [
+						"{{dummyUrl}}"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/{{dummyUrl}}/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"{{dummyUrl}}",
+								"1"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\"name\":\"pramod\",\"id\":\"1\"}"
+				}
+			]
+		},
+		{
+			"name": "{{dummyUrl}}/add",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{dummyUrl}}/add",
+					"host": [
+						"{{dummyUrl}}"
+					],
+					"path": [
+						"add"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{dummyUrl}}/add",
+							"host": [
+								"{{dummyUrl}}"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\"name\":\"Datta\",\"id\":\"99\"}"
+				}
+			]
+		},
+		{
+			"name": "{{dummyUrl}}/add/1",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{dummyUrl}}/add/1",
+					"host": [
+						"{{dummyUrl}}"
+					],
+					"path": [
+						"add",
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{dummyUrl}}/add/1",
+							"host": [
+								"{{dummyUrl}}"
+							],
+							"path": [
+								"add",
+								"1"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{\"name\":\"Pramod\",\"id\":\"1\"}"
+				}
+			]
+		},
+		{
+			"name": "{{dummyUrl}}/1",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{dummyUrl}}/1",
+					"host": [
+						"{{dummyUrl}}"
+					],
+					"path": [
+						"1"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Default",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{dummyUrl}}/1",
+							"host": [
+								"{{dummyUrl}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"code": 200,
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": "{}"
+				}
+			]
+		}
+	]
+}

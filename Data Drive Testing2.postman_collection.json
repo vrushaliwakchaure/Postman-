@@ -1,0 +1,184 @@
+{
+	"info": {
+		"_postman_id": "77353fc4-e42c-4f8c-932b-7f443aa28fc8",
+		"name": "Data Drive Testing2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22891475"
+	},
+	"item": [
+		{
+			"name": "Create Employee",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check args\",() => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.args.fName).to.eql(pm.variables.get('firstName'));\r",
+							"    pm.expect(response.args.lName).to.eql(pm.variables.get('lastName'));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/post?fName={{firstName}}&lName={{lastName}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "fName",
+							"value": "{{firstName}}"
+						},
+						{
+							"key": "lName",
+							"value": "{{lastName}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Reference Number",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}",
+					"host": [
+						"{{url}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Job Positions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check args\",() => {\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(response.args.jobPos).to.eql(pm.variables.get('position'));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/post?jobPos={{position}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "jobPos",
+							"value": "{{position}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"//load data from the file",
+					"if(typeof pm.variables.get('requestsData') !=='object'){",
+					"    pm.variables.set('requestsData', pm.iterationData.toObject());",
+					"}",
+					"",
+					"const requestsData = pm.variables.get('requestsData');",
+					"",
+					"if(typeof requestsData !=='object' || Object.keys(requestsData).length === 0){",
+					"     console.log('No external data provided or object is empty');",
+					"     return;",
+					"}",
+					"",
+					"//find the current request",
+					"",
+					"const currentRequest = requestsData.requests.filter(({name}) => name === pm.info.requestName)[0];",
+					"",
+					"//skip the rest since we have no data",
+					"",
+					"if(!currentRequest){",
+					"    console.log('Request ${pm.info.requestName} has no data defined');",
+					"    return;",
+					"}",
+					"",
+					"//Expose varibles",
+					"",
+					"const variable = currentRequest.data.shift();",
+					"",
+					"",
+					"for(const [key, value] of Object.entries(variables)){",
+					"    pm.variables.set(key, value);",
+					"}",
+					"",
+					"pm.pm.variables.set('requestsData', requestsData);",
+					"",
+					"//DEcide where to go next",
+					"if(currentRequest.data.length > 0){",
+					"    postman.setNextRequest(pm.info.requestName);",
+					"}",
+					"",
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "https://httpbin.org/",
+			"type": "string"
+		},
+		{
+			"key": "firstName",
+			"value": "foo",
+			"type": "string"
+		},
+		{
+			"key": "lastName",
+			"value": "bar",
+			"type": "string"
+		},
+		{
+			"key": "position",
+			"value": "Some Job",
+			"type": "string"
+		}
+	]
+}
